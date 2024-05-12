@@ -9,13 +9,35 @@ import {
     Grid,
     Paper,
     TextField,
+    Typography,
 } from "@mui/material";
 import { data } from "@/utils/data";
 import Image from "next/image";
 import { useState } from "react";
+import { Button } from "@/components";
 
 export default function StakingV2() {
-    const [value, setValue] = useState<string | null>("");
+    const [value, setValue] = useState<string>();
+    const [currentCoin, setCurrentCoin] = useState({
+        name: '',
+        staked: 0,
+        available: 0,
+        shortName: ''
+    });
+    const [textFieldValue, setTextFieldValue] = useState(0);
+    const [error, setError] = useState(false);
+
+    const handleTextFieldChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const num = event.target.value;
+        console.log('change text field', num);
+        // Only allow numeric input
+        if (parseFloat(num) < currentCoin.available || parseFloat(num) < currentCoin.staked) { // /^\d*$/.test(value) && 
+            setError(false);
+            setTextFieldValue(parseFloat(num));
+        } else {
+            setError(true);
+        }
+    };
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -46,16 +68,16 @@ export default function StakingV2() {
                                     sx={{width: "50%"}}
                                     value={value}
                                     onChange={(event: any, newValue: any) => {
+                                        setCurrentCoin(newValue);
                                         setValue(newValue.shortName);
                                     }}
                                     renderInput={(params) => (
                                         <TextField
                                             {...params}
+                                            error={error}
                                             label="Choose a crypto to restake"
-                                            inputProps={{
-                                                ...params.inputProps,
-                                                autoComplete: "new-password", // disable autocomplete and autofill
-                                            }}
+                                            variant="standard"
+                                            onChange={handleTextFieldChange}
                                         />
                                     )}
                                     renderOption={(props, option) => (
@@ -85,7 +107,44 @@ export default function StakingV2() {
                     </Card>
                 </Grid>
             </Grid>
-            <Paper></Paper>
+            <Paper
+                sx={{
+                    padding: "16px",
+                    marginTop: "16px"
+                }}
+            >
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
+                        <Typography>{`Available ${currentCoin.available} ${currentCoin.shortName}`}</Typography>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Typography>{`Staked ${currentCoin.staked} ${currentCoin.shortName}`}</Typography>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Button
+                            variant="contained"
+                            width={"100%"}
+                            disabled={currentCoin.available === 0 || textFieldValue < currentCoin.available}
+                        >
+                            Stake
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Button
+                            variant="contained"
+                            width={"100%"}
+                            disabled={currentCoin.staked === 0 || textFieldValue < currentCoin.staked}
+                        >
+                            Unstake
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography>
+                            I understand the risks associated and accept terms & conditions.
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Paper>
         </Box>
     );
 }

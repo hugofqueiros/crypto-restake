@@ -20,8 +20,8 @@ export const PortfolioPieChart = () => {
             series={[
                 {
                     data,
-                    innerRadius: 30,
-                    outerRadius: 130,
+                    innerRadius: 20,
+                    outerRadius: 100,
                     paddingAngle: 5,
                     cornerRadius: 5,
                 },
