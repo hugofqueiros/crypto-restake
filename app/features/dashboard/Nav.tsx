@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -8,11 +8,16 @@ import {
     ListItemIcon,
     ListItemText,
 } from "@mui/material";
-import { CurrencyBitcoin, Foundation, Settings, Message} from "@mui/icons-material";
+import {
+    CurrencyBitcoin,
+    Foundation,
+    Settings,
+    Message,
+} from "@mui/icons-material";
 import canaryprotocol from "./canaryprotocol.svg";
 
 export const Nav = () => {
-    const [activeRoute, setActiveRoute] = useState('/');
+    const [activeRoute, setActiveRoute] = useState("/");
 
     const handleRouteChange = (route: any) => {
         setActiveRoute(route);
@@ -29,9 +34,14 @@ export const Nav = () => {
                 <ListItemButton
                     component={Link}
                     href="/"
-                    selected={activeRoute === '/'}
-                    onClick={() => handleRouteChange('/')}
-                    sx={{ '&.Mui-selected': { backgroundColor: '#8ced22', color: '#000' } }}
+                    selected={activeRoute === "/"}
+                    onClick={() => handleRouteChange("/")}
+                    sx={{
+                        "&.Mui-selected": {
+                            backgroundColor: "#8ced22",
+                            color: "#000",
+                        },
+                    }}
                 >
                     <ListItemIcon>
                         <Foundation />
@@ -41,9 +51,14 @@ export const Nav = () => {
                 <ListItemButton
                     component={Link}
                     href="/staking"
-                    selected={activeRoute === '/staking'}
-                    onClick={() => handleRouteChange('/staking')}
-                    sx={{ '&.Mui-selected': { backgroundColor: '#8ced22', color: '#000' } }}
+                    selected={activeRoute === "/staking"}
+                    onClick={() => handleRouteChange("/staking")}
+                    sx={{
+                        "&.Mui-selected": {
+                            backgroundColor: "#8ced22",
+                            color: "#000",
+                        },
+                    }}
                 >
                     <ListItemIcon>
                         <CurrencyBitcoin />
@@ -52,10 +67,32 @@ export const Nav = () => {
                 </ListItemButton>
                 <ListItemButton
                     component={Link}
+                    href="/stakingV2"
+                    selected={activeRoute === "/stakingV2"}
+                    onClick={() => handleRouteChange("/stakingV2")}
+                    sx={{
+                        "&.Mui-selected": {
+                            backgroundColor: "#8ced22",
+                            color: "#000",
+                        },
+                    }}
+                >
+                    <ListItemIcon>
+                        <CurrencyBitcoin />
+                    </ListItemIcon>
+                    <ListItemText primary="Staking V2" />
+                </ListItemButton>
+                <ListItemButton
+                    component={Link}
                     href="/settings"
-                    selected={activeRoute === '/settings'}
-                    onClick={() => handleRouteChange('/settings')}
-                    sx={{ '&.Mui-selected': { backgroundColor: '#8ced22', color: '#000' } }}
+                    selected={activeRoute === "/settings"}
+                    onClick={() => handleRouteChange("/settings")}
+                    sx={{
+                        "&.Mui-selected": {
+                            backgroundColor: "#8ced22",
+                            color: "#000",
+                        },
+                    }}
                 >
                     <ListItemIcon>
                         <Settings />
@@ -65,9 +102,14 @@ export const Nav = () => {
                 <ListItemButton
                     component={Link}
                     href="/messages"
-                    selected={activeRoute === '/messages'}
-                    onClick={() => handleRouteChange('/messages')}
-                    sx={{ '&.Mui-selected': { backgroundColor: '#8ced22', color: '#000' } }}
+                    selected={activeRoute === "/messages"}
+                    onClick={() => handleRouteChange("/messages")}
+                    sx={{
+                        "&.Mui-selected": {
+                            backgroundColor: "#8ced22",
+                            color: "#000",
+                        },
+                    }}
                 >
                     <ListItemIcon>
                         <Message />

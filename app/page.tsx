@@ -1,7 +1,6 @@
 "use client";
 
 import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
-import { PieChart } from "@mui/x-charts";
 import { LineChart } from "@mui/x-charts/LineChart";
 import { PortfolioPieChart } from "./features";
 
