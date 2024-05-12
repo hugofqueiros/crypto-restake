@@ -7,9 +7,10 @@ interface ButtonProps {
     onClick?: any
     disabled?: boolean
     variant?: string
+    type?: string
 }
 
-export const Button = ({ children, onClick, disabled = false }: ButtonProps) => (
+export const Button = ({ children, onClick, disabled = false}: ButtonProps) => (
     <MuiButton sx={{
         backgroundColor: "#8ced22",
         color: "#000",

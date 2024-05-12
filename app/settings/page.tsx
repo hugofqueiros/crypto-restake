@@ -63,7 +63,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialSettings }) => {
                     value={settings.userEmail}
                     onChange={handleChange}
                 />
-                <Button variant="contained" type="submit">Save Settings</Button>
+                <Button variant="contained">Save Settings</Button>
             </Box>
             </form>
         </Paper>

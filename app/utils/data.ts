@@ -14,7 +14,7 @@ function createData(
     staked: number,
     available: number,
     image: any,
-    shortName?: string
+    shortName: string
 ) {
     return { name, staked, available, image, shortName};
 }
