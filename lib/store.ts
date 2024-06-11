@@ -16,7 +16,7 @@ export const makeStore = () => {
     reducer: rootReducer,
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
-    middleware: (getDefaultMiddleware) => {
+    middleware: (getDefaultMiddleware: any) => {
       return getDefaultMiddleware()
     },
   });
